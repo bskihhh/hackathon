@@ -1,11 +1,10 @@
 package com.getgobo.gobopay;
 
-import com.getgobo.gobopay.dto.OrderDetails;
-import com.getgobo.gobopay.dto.OrderId;
-import com.getgobo.gobopay.dto.Registration;
-import com.getgobo.gobopay.dto.TableId;
+import com.getgobo.gobopay.dto.*;
 import org.junit.Test;
 import retrofit2.Response;
+
+import java.math.BigDecimal;
 
 import static org.junit.Assert.assertEquals;
 
@@ -53,5 +52,16 @@ public class GoboPayClientTest {
         assertEquals(201, response.code());
 
         Registration registration = response.body();
+
+        Payment p = new Payment();
+        p.setOrderId(registration.getOrderId());
+        p.setAmount(BigDecimal.valueOf(12345, 2));
+        p.setCard("4500123412345678");
+
+        Response<Void> payResponse = goboPayClient.pay(p).execute();
+        assertEquals(201, payResponse.code());
+
+
+
     }
 }

@@ -8,22 +8,28 @@ public class Payment {
     private String card;
     private BigDecimal amount;
 
-    public Payment(String orderId, String card, BigDecimal amount) {
-        this.orderId = orderId;
-        this.card = card;
-        this.amount = amount;
-    }
-
     public String getOrderId() {
         return orderId;
+    }
+
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
     }
 
     public String getCard() {
         return card;
     }
 
+    public void setCard(String card) {
+        this.card = card;
+    }
+
     public BigDecimal getAmount() {
         return amount;
+    }
+
+    public void setAmount(BigDecimal amount) {
+        this.amount = amount;
     }
 
     @Override

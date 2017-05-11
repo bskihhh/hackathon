@@ -7,6 +7,7 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import com.getgobo.gobopay.dto.Registration;
+import com.getgobo.gobopay.dto.TableId;
 import com.google.zxing.Result;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
@@ -51,7 +52,9 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
         // If you would like to resume scanning, call this method below:
         mScannerView.resumeCameraPreview(this);
         GoboPayClient goboPayClient = new Dependencies().getGoboPayClient();
-        goboPayClient.register("1")
+        TableId tableId = new TableId();
+        tableId.setTableId("1");
+        goboPayClient.register(tableId)
                 .enqueue(new Callback<Registration>() {
 
                     @Override
