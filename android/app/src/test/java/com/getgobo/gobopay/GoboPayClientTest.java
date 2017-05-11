@@ -1,11 +1,8 @@
 package com.getgobo.gobopay;
 
 import com.getgobo.gobopay.dto.Registration;
-import org.junit.Assert;
 import org.junit.Test;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 import static org.junit.Assert.assertEquals;
 
@@ -16,11 +13,11 @@ import static org.junit.Assert.assertEquals;
  */
 public class GoboPayClientTest {
 
-    GoboPayClient goboPayClient = new Dependencies().getGoboPayClient();
+    private GoboPayClient goboPayClient = new Dependencies().getGoboPayClient();
 
     @Test
     public void register_shouldReceiveRegistrationResponse() throws Exception {
-        Response<Registration> response = goboPayClient.register("1").execute();
+        Response<Registration> response = goboPayClient.register("12345").execute();
         assertEquals(200, response.code());
     }
 }
