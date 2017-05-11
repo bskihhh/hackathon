@@ -10,7 +10,6 @@ const data = {
 		"restaurantName": "GOBO"
 	},
 	"order": {
-		"orderId": "1",
 		"items":[
 			{
 				"itemId": 1,
