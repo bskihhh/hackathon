@@ -1,7 +1,8 @@
+'use strict'
 const express = require ('express'),
 	app   = express (),
 	data  = require ('./json'),
-	port  = 3000,
+	port  = process.env.PORT || 3000,
 	uuid = require ('uuid/v4'),
 	_ = require ('lodash'),
 	bodyParser = require('body-parser')
@@ -27,7 +28,7 @@ let checkout = (order, callback) => {
 		if (err) {
 			callback (err)
 		} else {
-			_.remove (orderIds, (_id) => {return _id === orderId})
+			_.remove (orderIds, (_id) => {return _id === order.orderId})
 			callback (null)
 		}
 	})
@@ -41,7 +42,7 @@ app.post ('/register', (req, res) => {
 			console.log (err)
 			res.status (404).end()
 		} else {
-			orderId = uuid()
+			let orderId = uuid()
 			orderIds.push (orderId)
 			console.log ("[success]\nregistration successful for table", tableId)
 			res.status (201).json ({orderId, tableId})
@@ -79,6 +80,6 @@ app.post ('/pay', (req, res) => {
 	})
 })
 
-app.listen (port, ()=>{
+app.listen (port , ()=>{
 	console.log ("gobo is live @" + port )
 })
