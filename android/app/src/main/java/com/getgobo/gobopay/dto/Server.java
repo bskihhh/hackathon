@@ -3,23 +3,23 @@ package com.getgobo.gobopay.dto;
 import java.util.Objects;
 
 public class Server {
-    private String id;
-    private String name;
+    private String serverId;
+    private String serverName;
 
-    public String getId() {
-        return id;
+    public String getServerId() {
+        return serverId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setServerId(String serverId) {
+        this.serverId = serverId;
     }
 
-    public String getName() {
-        return name;
+    public String getServerName() {
+        return serverName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setServerName(String serverName) {
+        this.serverName = serverName;
     }
 
     @Override
@@ -27,20 +27,20 @@ public class Server {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Server server = (Server) o;
-        return Objects.equals(getId(), server.getId()) &&
-                Objects.equals(getName(), server.getName());
+        return Objects.equals(getServerId(), server.getServerId()) &&
+                Objects.equals(getServerName(), server.getServerName());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getName());
+        return Objects.hash(getServerId(), getServerName());
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Server{");
-        sb.append("id='").append(id).append('\'');
-        sb.append(", name='").append(name).append('\'');
+        sb.append("serverId='").append(serverId).append('\'');
+        sb.append(", serverName='").append(serverName).append('\'');
         sb.append('}');
         return sb.toString();
     }

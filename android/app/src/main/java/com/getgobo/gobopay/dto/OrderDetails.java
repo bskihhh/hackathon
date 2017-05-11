@@ -2,7 +2,7 @@ package com.getgobo.gobopay.dto;
 
 import java.util.Objects;
 
-public class Visit {
+public class OrderDetails {
     private String tableId;
     private Server server;
     private Customer customer;
@@ -53,12 +53,12 @@ public class Visit {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Visit visit = (Visit) o;
-        return Objects.equals(getTableId(), visit.getTableId()) &&
-                Objects.equals(getServer(), visit.getServer()) &&
-                Objects.equals(getCustomer(), visit.getCustomer()) &&
-                Objects.equals(getRestaurant(), visit.getRestaurant()) &&
-                Objects.equals(getOrder(), visit.getOrder());
+        OrderDetails orderDetails = (OrderDetails) o;
+        return Objects.equals(getTableId(), orderDetails.getTableId()) &&
+                Objects.equals(getServer(), orderDetails.getServer()) &&
+                Objects.equals(getCustomer(), orderDetails.getCustomer()) &&
+                Objects.equals(getRestaurant(), orderDetails.getRestaurant()) &&
+                Objects.equals(getOrder(), orderDetails.getOrder());
     }
 
     @Override
@@ -68,7 +68,7 @@ public class Visit {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Visit{");
+        final StringBuilder sb = new StringBuilder("OrderDetails{");
         sb.append("tableId='").append(tableId).append('\'');
         sb.append(", server=").append(server);
         sb.append(", customer=").append(customer);
