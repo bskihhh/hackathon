@@ -9,11 +9,11 @@ public class Dependencies {
 
     public GoboPayClient getGoboPayClient() {
         if (goboPayClient == null) {
-
             Retrofit retrofit = new Retrofit.Builder()
                     .baseUrl("http://gobo-node.pcf-apps.intware.com/")
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
+
 
             goboPayClient = retrofit.create(GoboPayClient.class);
         }

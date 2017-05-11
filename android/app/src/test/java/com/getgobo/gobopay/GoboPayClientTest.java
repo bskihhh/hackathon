@@ -17,7 +17,7 @@ public class GoboPayClientTest {
 
     @Test
     public void register_shouldReceiveRegistrationResponse() throws Exception {
-        Response<Registration> response = goboPayClient.register("12345").execute();
+        Response<Registration> response = goboPayClient.register("1").execute();
         assertEquals(200, response.code());
     }
 }
