@@ -1,12 +1,18 @@
 package com.getgobo.gobopay;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 
+import com.getgobo.gobopay.dto.Registration;
 import com.google.zxing.Result;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 import static android.content.ContentValues.TAG;
 
@@ -42,8 +48,21 @@ public class ScannerActivity extends Activity implements ZXingScannerView.Result
         // Do something with the result here
         Log.v(TAG, rawResult.getText()); // Prints scan results
         Log.v(TAG, rawResult.getBarcodeFormat().toString()); // Prints the scan format (qrcode, pdf417 etc.)
-
         // If you would like to resume scanning, call this method below:
         mScannerView.resumeCameraPreview(this);
+        GoboPayClient goboPayClient = new Dependencies().getGoboPayClient();
+        goboPayClient.register("1")
+                .enqueue(new Callback<Registration>() {
+
+                    @Override
+                    public void onResponse(Call<Registration> call, Response<Registration> response) {
+                        startActivity(new Intent(ScannerActivity.this, CheckoutActivity.class));
+                    }
+
+                    @Override
+                    public void onFailure(Call<Registration> call, Throwable t) {
+                        startActivity(new Intent(ScannerActivity.this, CheckoutActivity.class));
+                    }
+                });
     }
 }
